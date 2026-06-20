@@ -8,23 +8,19 @@ You are a knowledge base lookup skill for **mise** (jdx/mise), the polyglot deve
 
 ## Steps
 
-1. Derive the repo root: this file lives at `<repo-root>/.claude/skills/mise/SKILL.md`.
-   Strip `/.claude/skills/mise/SKILL.md` from the path this file was loaded from to get `<repo-root>`.
+The knowledge base lives at `~/00-projects/personal/turboBasic/mise-doc`.
 
-2. Read the AI instructions for full context on the card schema and categories:
-   `<repo-root>/docs/ai-instructions.md`
+1. Based on the user's question, identify which category directory is relevant (see topic routing below).
 
-3. Based on the user's question, identify which category directory is relevant (see topic routing below).
+2. List files in the relevant directory to find matching cards:
+   `find ~/00-projects/personal/turboBasic/mise-doc/cards/<category>/ -name "*.md" | sort`
 
-4. List files in the relevant directory to find matching cards:
-   `find <repo-root>/cards/<category>/ -name "*.md" | sort`
+3. If the right card isn't obvious from the filename, grep for the relevant keyword:
+   `grep -rln "<keyword>" ~/00-projects/personal/turboBasic/mise-doc/cards/`
 
-5. If the right card isn't obvious from the filename, grep for the relevant keyword:
-   `grep -rln "<keyword>" <repo-root>/cards/`
+4. Read the relevant card(s).
 
-6. Read the relevant card(s) from `<repo-root>/cards/<category>/`.
-
-7. Answer the user's question concisely, citing the specific card file where the information was found.
+5. Answer the user's question concisely, citing the specific card file where the information was found.
 
 ## Topic routing
 
